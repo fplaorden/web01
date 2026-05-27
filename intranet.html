@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet | Universidad Aurelius</title>
+    <!-- Estilos de Intranet -->
+    <link rel="stylesheet" href="css/intranet.css">
+    <!-- FontAwesome para iconos del Dashboard -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- 1. PANTALLA DE INICIO DE SESIÓN (LOGIN SCREEN) -->
+    <main class="login-screen" id="login-screen">
+        <!-- Parte Izquierda - Gráfico y Marca -->
+        <div class="login-left">
+            <div class="login-logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5 L15 25 V60 C15 80 40 92 50 95 C60 92 85 80 85 60 V25 L50 5 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                    <path d="M50 12 L20 29 V58 C20 75 42 86 50 89 C58 86 80 75 80 58 V29 L50 12 Z" fill="currentColor" opacity="0.15"/>
+                    <path d="M35 52 C40 50 45 52 50 55 C55 52 60 50 65 52 V38 C60 36 55 38 50 41 C45 38 40 36 35 38 V52 Z" fill="currentColor"/>
+                    <line x1="50" y1="41" x2="50" y2="55" stroke="var(--secondary)" stroke-width="2"/>
+                    <polygon points="50,20 52,25 57,25 53,28 55,33 50,30 45,33 47,28 43,25 48,25" fill="var(--secondary)"/>
+                </svg>
+                <h1 class="login-logo-title">Universidad Aurelius</h1>
+            </div>
+            
+            <div class="login-left-content">
+                <h2>Portal de Servicios y Gestión Interna</h2>
+                <p>Acceso seguro para alumnos, personal docente (PDI) y personal técnico o administrativo (PTGAS). Consulta tu expediente, aula virtual y trámites en un único lugar.</p>
+            </div>
+            
+            <div style="font-size: 0.85rem; opacity: 0.7;">
+                <p>&copy; 2026 Universidad Aurelius - Sede Electrónica y Portal Corporativo.</p>
+            </div>
+        </div>
+
+        <!-- Parte Derecha - Formulario de Login -->
+        <div class="login-right">
+            <div class="login-form-container">
+                <div class="login-form-header">
+                    <h3>Iniciar Sesión</h3>
+                    <p>Introduce tus credenciales institucionales</p>
+                </div>
+                
+                <div id="login-error-alert" style="display:none; padding:0.8rem; border-radius:6px; background-color:var(--error-light); color:var(--error); font-size:0.85rem; margin-bottom:1.5rem; font-weight:600; border:1px solid rgba(239, 68, 68, 0.15);"></div>
+
+                <form id="login-form">
+                    <div class="login-form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="email" class="login-input" placeholder="usuario@aurelius.edu" required autocomplete="username">
+                        </div>
+                    </div>
+                    
+                    <div class="login-form-group">
+                        <label for="password">Contraseña</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" class="login-input" placeholder="••••••••" required autocomplete="current-password">
+                        </div>
+                    </div>
+                    
+                    <div class="login-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <span>Recordarme</span>
+                        </label>
+                        <a href="#recuperar" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-login">Acceder al Portal</button>
+                </form>
+
+                <!-- Cuentas de Demostración para Prueba (Solicitado en el Plan) -->
+                <div class="login-demo-accounts">
+                    <h5>Cuentas de demostración:</h5>
+                    <p style="margin-bottom:0.4rem"><strong>Estudiante:</strong> <code>estudiante@aurelius.edu</code> (Clave: <code>12345</code>)</p>
+                    <p><strong>Profesor:</strong> <code>profesor@aurelius.edu</code> (Clave: <code>12345</code>)</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 2. INTERFAZ DEL DASHBOARD DE LA INTRANET (DASHBOARD LAYOUT) -->
+    <div class="dashboard-layout" id="dashboard-layout">
+        <!-- Barra Lateral de Navegación (Sidebar) -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 5 L15 25 V60 C15 80 40 92 50 95 C60 92 85 80 85 60 V25 L50 5 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <path d="M35 52 C40 50 45 52 50 55 C55 52 60 50 65 52 V38 C60 36 55 38 50 41 C45 38 40 36 35 38 V52 Z" fill="currentColor"/>
+                    </svg>
+                    <span>U. Aurelius</span>
+                </div>
+
+                <!-- Perfil Breve del Usuario -->
+                <div class="profile-card">
+                    <div class="profile-avatar">AS</div>
+                    <div class="profile-info">
+                        <div class="profile-name">Cargando...</div>
+                        <div class="profile-role">Estudiante</div>
+                    </div>
+                </div>
+
+                <!-- Menú de Pestañas -->
+                <ul class="sidebar-menu" style="margin-top: 2rem;">
+                    <li class="menu-item active" data-tab="inicio">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Panel de Control</span>
+                    </li>
+                    <li class="menu-item student-only" data-tab="notas">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>Calificaciones</span>
+                    </li>
+                    <li class="menu-item student-only" data-tab="horarios">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Mi Horario</span>
+                    </li>
+                    <li class="menu-item student-only" data-tab="tramites">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span>Secretaría Virtual</span>
+                    </li>
+                    <li class="menu-item student-only" data-tab="aula-virtual">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <span>Aula Virtual</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="btn-logout" id="btn-logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Cerrar Sesión</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Área de Contenido Principal -->
+        <main class="main-content">
+            <!-- Encabezado superior del Dashboard -->
+            <header class="dashboard-header">
+                <div class="dashboard-title">
+                    <h2>Panel de Control</h2>
+                </div>
+                <div class="dashboard-actions">
+                    <!-- Campana de notificaciones con badge -->
+                    <div class="notifications-bell" title="Notificaciones">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="bell-badge">2</span>
+                    </div>
+                    <!-- Volver a la web pública -->
+                    <a href="index.html" class="btn-submit" style="background-color:transparent; border: 1px solid var(--primary); color:var(--primary); padding:0.4rem 1rem; font-size:0.85rem;"><i class="fa-solid fa-house"></i> Volver a la Web</a>
+                </div>
+            </header>
+
+            <!-- Contenedor dinámico de paneles (Tabs) -->
+            <div class="panel-container">
+
+                <!-- TAB 1: INICIO (PANEL DE CONTROL GENERAL) -->
+                <section class="tab-panel active" id="tab-inicio">
+                    <!-- Vista exclusiva Alumno -->
+                    <div class="student-only">
+                        <!-- Tarjetas de resumen rápido -->
+                        <div class="dashboard-summary-cards">
+                            <div class="summary-card">
+                                <div class="summary-card-info">
+                                    <h4>Nota Media Expediente</h4>
+                                    <p id="summary-avg">8.4</p>
+                                </div>
+                                <div class="summary-card-icon gold"><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-card-info">
+                                    <h4>Créditos Superados</h4>
+                                    <p id="summary-credits">120 / 240 ECTS</p>
+                                </div>
+                                <div class="summary-card-icon blue"><i class="fa-solid fa-book-bookmark"></i></div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-card-info">
+                                    <h4>Tareas Pendientes</h4>
+                                    <p id="summary-pending">2</p>
+                                </div>
+                                <div class="summary-card-icon green"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Widgets de información -->
+                        <div class="dashboard-widgets-grid">
+                            <!-- Avisos Oficiales -->
+                            <div class="widget">
+                                <div class="widget-header">
+                                    <h3>Avisos e Información Importante</h3>
+                                </div>
+                                <div class="announcements-list">
+                                    <div class="announcement-item warning">
+                                        <span class="announcement-date">Hace 2 horas | Vicerrectorado de Estudiantes</span>
+                                        <h4 class="announcement-title">Ampliación de plazo de matrícula para la Convocatoria de Julio</h4>
+                                        <p class="announcement-text">El plazo de matrícula para los exámenes extraordinarios se amplía oficialmente hasta el próximo 5 de Junio a las 14:00.</p>
+                                    </div>
+                                    <div class="announcement-item">
+                                        <span class="announcement-date">Ayer | Biblioteca Central</span>
+                                        <h4 class="announcement-title">Horario extraordinario por periodo de exámenes</h4>
+                                        <p class="announcement-text">La biblioteca del Campus Central abrirá 24 horas ininterrumpidamente desde el 1 de Junio al 30 de Junio.</p>
+                                    </div>
+                                    <div class="announcement-item success">
+                                        <span class="announcement-date">23 May 2026 | Sede Electrónica</span>
+                                        <h4 class="announcement-title">Publicado el listado definitivo de las Becas de Movilidad Internacional</h4>
+                                        <p class="announcement-text">Puedes consultar la resolución en tu buzón de la Sede Electrónica o en la pestaña "Secretaría Virtual".</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Accesos rápidos / Enlaces -->
+                            <div class="widget" style="display:flex; flex-direction:column; gap:1.2rem">
+                                <div class="widget-header" style="margin-bottom:0">
+                                    <h3>Recursos Rápidos</h3>
+                                </div>
+                                <a href="#horario" class="summary-card" style="padding: 1rem; border-color: rgba(0,0,0,0.06);" onclick="document.querySelector('[data-tab=horarios]').click()">
+                                    <span style="font-size:0.9rem; font-weight:600;"><i class="fa-solid fa-calendar-week" style="color:var(--primary); margin-right:0.5rem"></i> Ver mi horario de clases</span>
+                                    <span>&rarr;</span>
+                                </a>
+                                <a href="#notas" class="summary-card" style="padding: 1rem; border-color: rgba(0,0,0,0.06);" onclick="document.querySelector('[data-tab=notas]').click()">
+                                    <span style="font-size:0.9rem; font-weight:600;"><i class="fa-solid fa-file-signature" style="color:var(--secondary-hover); margin-right:0.5rem"></i> Consultar actas de notas</span>
+                                    <span>&rarr;</span>
+                                </a>
+                                <a href="#aula" class="summary-card" style="padding: 1rem; border-color: rgba(0,0,0,0.06);" onclick="document.querySelector('[data-tab=aula-virtual]').click()">
+                                    <span style="font-size:0.9rem; font-weight:600;"><i class="fa-solid fa-graduation-cap" style="color:var(--success); margin-right:0.5rem"></i> Entregar trabajos pendientes</span>
+                                    <span>&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vista exclusiva Profesor (Se inyecta por JavaScript) -->
+                    <div class="prof-only" id="prof-dashboard-container">
+                        <!-- El contenido del profesor se renderiza mediante renderProfessorDashboard() -->
+                        <p style="text-align: center; padding: 2rem;">Cargando panel de profesor...</p>
+                    </div>
+                </section>
+
+                <!-- TAB 2: CALIFICACIONES (ESTUDIANTE) -->
+                <section class="tab-panel" id="tab-notas">
+                    <div class="widget" style="margin-bottom: 2rem;">
+                        <div class="widget-header">
+                            <h3>Expediente Académico Actual</h3>
+                            <span class="badge badge-info" id="student-degree-badge">Grado en Ingeniería Aeroespacial</span>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Asignatura</th>
+                                        <th>Créditos</th>
+                                        <th>Calificación Cualitativa</th>
+                                        <th>Nota Numérica</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grades-table-body">
+                                    <!-- Dinámico por JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 3: HORARIOS (ESTUDIANTE) -->
+                <section class="tab-panel" id="tab-horarios">
+                    <div class="widget" style="margin-bottom: 2rem;">
+                        <div class="widget-header">
+                            <h3>Calendario de Clases Semanal</h3>
+                            <span class="badge badge-success">Segundo Semestre (Curso 2025/26)</span>
+                        </div>
+                        
+                        <div class="schedule-grid">
+                            <!-- Cabeceras de los días -->
+                            <div class="schedule-header">Hora</div>
+                            <div class="schedule-header">Lunes</div>
+                            <div class="schedule-header">Martes</div>
+                            <div class="schedule-header">Miércoles</div>
+                            <div class="schedule-header">Jueves</div>
+                            <div class="schedule-header">Viernes</div>
+
+                            <!-- Fila 08:30 - 10:30 -->
+                            <div class="schedule-time-cell">08:30 - 10:30</div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card">
+                                    <div class="class-name">Aerodinámica</div>
+                                    <div class="class-room">Aula 2.3 - E. Ingenierías</div>
+                                </div>
+                            </div>
+                            <div class="schedule-class-cell"></div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card">
+                                    <div class="class-name">Aerodinámica</div>
+                                    <div class="class-room">Aula 2.3 - E. Ingenierías</div>
+                                </div>
+                            </div>
+                            <div class="schedule-class-cell"></div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card green">
+                                    <div class="class-name">Mecánica Rac.</div>
+                                    <div class="class-room">Aula Magna - Central</div>
+                                </div>
+                            </div>
+
+                            <!-- Fila 10:30 - 12:30 -->
+                            <div class="schedule-time-cell">10:30 - 12:30</div>
+                            <div class="schedule-class-cell"></div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card blue">
+                                    <div class="class-name">Python Prog.</div>
+                                    <div class="class-room">Lab Computación IV</div>
+                                </div>
+                            </div>
+                            <div class="schedule-class-cell"></div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card blue">
+                                    <div class="class-name">Python Prog.</div>
+                                    <div class="class-room">Lab Computación IV</div>
+                                </div>
+                            </div>
+                            <div class="schedule-class-cell"></div>
+
+                            <!-- Fila 12:30 - 14:30 -->
+                            <div class="schedule-time-cell">12:30 - 14:30</div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card green">
+                                    <div class="class-name">Mecánica Rac.</div>
+                                    <div class="class-room">Aula Magna - Central</div>
+                                </div>
+                            </div>
+                            <div class="schedule-class-cell"></div>
+                            <div class="schedule-class-cell">
+                                <div class="class-card green">
+                                    <div class="class-name">Mecánica Rac.</div>
+                                    <div class="class-room">Aula Magna - Central</div>
+                                </div>
+                            </div>
+                            <div class="schedule-class-cell"></div>
+                            <div class="schedule-class-cell"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 4: SECRETARÍA VIRTUAL / TRÁMITES -->
+                <section class="tab-panel" id="tab-tramites">
+                    <div class="tramites-layout">
+                        <!-- Formulario de solicitud -->
+                        <div class="form-card">
+                            <h3>Nueva Solicitud Administrativa</h3>
+                            <div id="tramite-success-alert" style="display:none; padding:0.8rem; border-radius:6px; background-color:var(--success-light); color:var(--success); font-size:0.85rem; margin-bottom:1rem; font-weight:700; border:1px solid rgba(16, 185, 129, 0.15);">
+                                ¡Solicitud registrada en la Sede Electrónica!
+                            </div>
+                            <form id="new-tramite-form">
+                                <div class="form-group">
+                                    <label for="tramite-type">Tipo de Trámite</label>
+                                    <select id="tramite-type" class="form-input">
+                                        <option value="Certificado de Matrícula Oficial">Certificado de Matrícula Oficial</option>
+                                        <option value="Solicitud de Beca de Excelencia">Solicitud de Beca de Excelencia</option>
+                                        <option value="Certificado de Notas con Firma Digital">Certificado de Notas con Firma Digital</option>
+                                        <option value="Solicitud de Convalidaciones">Solicitud de Convalidaciones</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tramite-motive">Justificación o Motivo</label>
+                                    <textarea id="tramite-motive" class="form-input" style="height: 100px; resize: none;" placeholder="Describa brevemente el motivo de su solicitud..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn-submit" style="width: 100%;"><i class="fa-solid fa-file-signature"></i> Firmar y Presentar</button>
+                            </form>
+                        </div>
+
+                        <!-- Historial de trámites -->
+                        <div class="widget">
+                            <div class="widget-header" style="border-bottom:none; margin-bottom:0.5rem">
+                                <h3>Historial de Expedientes Abiertos</h3>
+                            </div>
+                            <div class="table-wrapper">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ref</th>
+                                            <th>Fecha</th>
+                                            <th>Trámite</th>
+                                            <th>Estado</th>
+                                            <th>Documento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tramites-table-body">
+                                        <!-- Dinámico por JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 5: AULA VIRTUAL (MOODLE) -->
+                <section class="tab-panel" id="tab-aula-virtual">
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap"></i> Mis Asignaturas en el Aula Virtual</h3>
+                        
+                        <div class="moodle-grid" id="moodle-container">
+                            <!-- Dinámico por JS -->
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL DE ENTREGA DE TRABAJOS (AULA VIRTUAL) -->
+    <div class="modal-overlay" id="assignment-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Subir Entrega Académica</h3>
+                <button class="btn-close-modal" id="btn-close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:0.9rem; color:var(--text-muted)">Estás entregando un documento para la tarea:</p>
+                <h4 id="modal-assignment-name" style="color:var(--primary-dark); font-size:1.1rem; margin:0.3rem 0 1rem 0;">Tarea Académica</h4>
+                
+                <!-- Input file oculto y zona drag-and-drop -->
+                <input type="file" id="file-input" style="display: none;" accept=".pdf,.zip,.doc,.docx">
+                <div class="drop-zone" id="drop-zone">
+                    <div class="drop-zone-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <p>Arrastra archivos aquí o haz clic para subir</p>
+                    <span style="font-size:0.75rem; color:var(--text-muted)">Archivos permitidos: PDF, ZIP (Max 10MB)</span>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+                    <button class="btn-submit" style="background-color: var(--text-muted)" onclick="document.getElementById('assignment-modal').style.display='none'">Cancelar</button>
+                    <button class="btn-submit" id="btn-submit-file">Entregar Trabajo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de la Intranet -->
+    <script src="js/intranet.js"></script>
+</body>
+</html>

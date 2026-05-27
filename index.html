@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidad Aurelius | Excelencia, Tradición e Innovación</title>
+    <meta name="description" content="Bienvenido a la Universidad Aurelius, una de las instituciones educativas más prestigiosas del mundo. Descubre nuestros grados, másteres e investigaciones de vanguardia.">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Pequeño parche para iconos si FontAwesome falla o para usar SVG sencillos */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            stroke-width: 0;
+            stroke: currentColor;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="header-wrapper">
+        <!-- Barra de Utilidad Superior -->
+        <div class="utility-bar">
+            <div class="container utility-container">
+                <div class="utility-links">
+                    <a href="#directorio"><i class="fa-solid fa-address-book"></i> Directorio</a>
+                    <a href="#biblioteca"><i class="fa-solid fa-book"></i> Biblioteca</a>
+                    <a href="#idiomas"><i class="fa-solid fa-globe"></i> Centro de Idiomas</a>
+                    <a href="#contacto"><i class="fa-solid fa-envelope"></i> Contacto</a>
+                </div>
+                <div class="utility-actions">
+                    <a href="#buscar"><i class="fa-solid fa-magnifying-glass"></i> Buscar</a>
+                    <a href="intranet.html" class="btn-intranet-quick"><i class="fa-solid fa-lock"></i> Acceso Intranet</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal -->
+        <nav class="main-nav">
+            <div class="container nav-container">
+                <!-- Logotipo de la Universidad (Escudo SVG + Texto) -->
+                <a href="index.html" class="logo" id="main-logo-link">
+                    <!-- Escudo Universitario SVG -->
+                    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 5 L15 25 V60 C15 80 40 92 50 95 C60 92 85 80 85 60 V25 L50 5 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <path d="M50 12 L20 29 V58 C20 75 42 86 50 89 C58 86 80 75 80 58 V29 L50 12 Z" fill="currentColor" opacity="0.15"/>
+                        <!-- Libro Abierto -->
+                        <path d="M35 52 C40 50 45 52 50 55 C55 52 60 50 65 52 V38 C60 36 55 38 50 41 C45 38 40 36 35 38 V52 Z" fill="currentColor"/>
+                        <line x1="50" y1="41" x2="50" y2="55" stroke="var(--secondary)" stroke-width="2"/>
+                        <!-- Tres estrellas académicas -->
+                        <polygon points="50,20 52,25 57,25 53,28 55,33 50,30 45,33 47,28 43,25 48,25" fill="var(--secondary)"/>
+                        <polygon points="32,28 34,31 38,31 35,33 36,37 32,35 28,37 29,33 26,31 30,31" fill="var(--secondary)"/>
+                        <polygon points="68,28 70,31 74,31 71,33 72,37 68,35 64,37 65,33 62,31 66,31" fill="var(--secondary)"/>
+                    </svg>
+                    <div class="logo-text">
+                        <span class="logo-title">AURELIUS</span>
+                        <span class="logo-subtitle">UNIVERSIDAD</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces del Menú -->
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#universidad" class="nav-link">Universidad <i class="fa-solid fa-chevron-down" style="font-size: 0.7em;"></i></a>
+                        <!-- Megamenú para sección Universidad -->
+                        <div class="megamenu">
+                            <div class="megamenu-column">
+                                <h4>Institución</h4>
+                                <ul>
+                                    <li><a href="#saludo-rector">Saludo del Rector</a></li>
+                                    <li><a href="#historia">Historia y Valores</a></li>
+                                    <li><a href="#gobierno">Órganos de Gobierno</a></li>
+                                    <li><a href="#transparencia">Portal de Transparencia</a></li>
+                                </ul>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Campus y Servicios</h4>
+                                <ul>
+                                    <li><a href="#campus-leon">Campus de León (Central)</a></li>
+                                    <li><a href="#campus-ponferrada">Campus de Ponferrada</a></li>
+                                    <li><a href="#sostenibilidad">Oficina Verde (Eco-Campus)</a></li>
+                                    <li><a href="#deportes">Servicios Deportivos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#estudios" class="nav-link">Estudios <i class="fa-solid fa-chevron-down" style="font-size: 0.7em;"></i></a>
+                        <!-- Megamenú para Estudios -->
+                        <div class="megamenu">
+                            <div class="megamenu-column">
+                                <h4>Formación Oficial</h4>
+                                <ul>
+                                    <li><a href="#grados">Grados Universitarios</a></li>
+                                    <li><a href="#masteres">Másteres Universitarios</a></li>
+                                    <li><a href="#doctorados">Escuela de Doctorado</a></li>
+                                    <li><a href="#admision">Admisión y Matrícula</a></li>
+                                </ul>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Formación Continua y Otros</h4>
+                                <ul>
+                                    <li><a href="#titulos-propios">Títulos Propios</a></li>
+                                    <li><a href="#cursos-verano">Cursos de Verano</a></li>
+                                    <li><a href="#idiomas-cursos">Cursos de Idiomas</a></li>
+                                    <li><a href="#mayores">Universidad de la Experiencia</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#investigacion" class="nav-link">Investigación <i class="fa-solid fa-chevron-down" style="font-size: 0.7em;"></i></a>
+                        <!-- Megamenú para Investigación -->
+                        <div class="megamenu">
+                            <div class="megamenu-column">
+                                <h4>Actividad Científica</h4>
+                                <ul>
+                                    <li><a href="#grupos">Grupos de Investigación</a></li>
+                                    <li><a href="#proyectos">Proyectos y Financiación</a></li>
+                                    <li><a href="#institutos">Institutos de Investigación</a></li>
+                                    <li><a href="#patentes">Patentes y Transferencia</a></li>
+                                </ul>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Recursos para Investigadores</h4>
+                                <ul>
+                                    <li><a href="#convocatorias">Convocatorias Abiertas</a></li>
+                                    <li><a href="#doctorandos">Apoyo a Doctorandos</a></li>
+                                    <li><a href="#biblioteca-cientifica">Repositorio Institucional</a></li>
+                                    <li><a href="#comite-etica">Comité de Ética</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#campus-life" class="nav-link">Vida en el Campus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#actualidad" class="nav-link">Actualidad</a>
+                    </li>
+                </ul>
+
+                <!-- Hamburger para Móvil -->
+                <button class="hamburger" aria-label="Abrir menú de navegación">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tagline">Tradición Académica y Futuro Digital</span>
+            <h1 class="hero-title">Lidera el Futuro en la Universidad Aurelius</h1>
+            <p class="hero-description">Inspirados por las instituciones más prestigiosas del mundo, cultivamos el pensamiento crítico, la investigación pionera y el crecimiento profesional de nuestros estudiantes en un entorno global.</p>
+            <div class="hero-cta">
+                <a href="#estudios" class="btn btn-primary">Explorar Estudios</a>
+                <a href="#investigacion" class="btn btn-outline">Nuestra Investigación</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CIFRAS (OVERLAPPING BANNER) -->
+    <div class="container">
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">12:1</div>
+                    <div class="stat-label">Ratio Alumno / Docente</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">Inserción Laboral</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45+</div>
+                    <div class="stat-label">Grupos de Investigación</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">18000+</div>
+                    <div class="stat-label">Estudiantes Activos</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SECCIÓN DE ESTUDIOS -->
+    <section class="section-padding academics-section" id="estudios">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Oferta Académica Excepcional</h2>
+                <p class="section-subtitle">Diseña tu trayectoria educativa con titulaciones rigurosas enfocadas en los desafíos contemporáneos.</p>
+            </div>
+            
+            <div class="academics-grid">
+                <!-- Tarjeta Grados -->
+                <article class="academic-card">
+                    <div class="academic-card-img">
+                        <img src="assets/library.png" alt="Biblioteca Histórica - Grados Universitarios">
+                        <span class="academic-card-badge">Oficial</span>
+                    </div>
+                    <div class="academic-card-content">
+                        <h3 class="academic-card-title">Grados Universitarios</h3>
+                        <p class="academic-card-desc">Más de 40 titulaciones en Ciencias de la Salud, Ingenierías, Ciencias Sociales y Humanidades con un enfoque multidisciplinar y práctico.</p>
+                        <a href="#grados-info" class="academic-card-link">Ver todos los grados <span>&rarr;</span></a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta Másteres -->
+                <article class="academic-card">
+                    <div class="academic-card-img">
+                        <img src="assets/campus.png" alt="Campus Universitario - Másteres Oficiales">
+                        <span class="academic-card-badge">Posgrado</span>
+                    </div>
+                    <div class="academic-card-content">
+                        <h3 class="academic-card-title">Másteres Oficiales</h3>
+                        <p class="academic-card-desc">Especialización profesional y de investigación de alto nivel en colaboración con empresas líderes nacionales e internacionales.</p>
+                        <a href="#masteres-info" class="academic-card-link">Explorar másteres <span>&rarr;</span></a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta Doctorado -->
+                <article class="academic-card">
+                    <div class="academic-card-img">
+                        <img src="assets/research.png" alt="Laboratorio de Investigación - Doctorado">
+                        <span class="academic-card-badge">Investigación</span>
+                    </div>
+                    <div class="academic-card-content">
+                        <h3 class="academic-card-title">Programas de Doctorado</h3>
+                        <p class="academic-card-desc">Únete a nuestra escuela de doctorado de renombre internacional y desarrolla tesis doctorales con impacto científico global.</p>
+                        <a href="#doctorados-info" class="academic-card-link">Ver programas <span>&rarr;</span></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE INVESTIGACIÓN -->
+    <section class="section-padding research-section" id="investigacion">
+        <div class="container">
+            <div class="research-grid">
+                <div class="research-content">
+                    <h2>Investigación con <span>Impacto Global</span></h2>
+                    <p>En la Universidad Aurelius, entendemos que la educación del futuro nace de los descubrimientos de hoy. Nuestros investigadores colaboran a nivel mundial en soluciones para el cambio climático, la inteligencia artificial y la salud pública de precisión.</p>
+                    
+                    <div class="research-bullets">
+                        <div class="research-bullet">
+                            <span class="research-bullet-icon"><i class="fa-solid fa-flask"></i></span>
+                            <div class="research-bullet-text">
+                                <h4>Laboratorios de Última Generación</h4>
+                                <p>Infraestructura científica avanzada equipada para experimentos complejos en biotecnología e ingeniería.</p>
+                            </div>
+                        </div>
+                        <div class="research-bullet">
+                            <span class="research-bullet-icon"><i class="fa-solid fa-handshake"></i></span>
+                            <div class="research-bullet-text">
+                                <h4>Transferencia de Tecnología</h4>
+                                <p>Convertimos descubrimientos académicos en patentes y empresas emergentes viables en el mercado comercial.</p>
+                            </div>
+                        </div>
+                        <div class="research-bullet">
+                            <span class="research-bullet-icon"><i class="fa-solid fa-users"></i></span>
+                            <div class="research-bullet-text">
+                                <h4>Becas de Doctorado Completas</h4>
+                                <p>Programas de financiación robustos para atraer al mejor talento global de investigación.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#investigacion-mas" class="btn btn-secondary">Portal Científico</a>
+                </div>
+                <div class="research-img-wrapper">
+                    <img src="assets/research.png" alt="Estudiantes investigando en el laboratorio científico">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE NOTICIAS Y EVENTOS (ACTUALIDAD) -->
+    <section class="section-padding news-section" id="actualidad">
+        <div class="container">
+            <div class="news-layout">
+                <!-- Noticias -->
+                <div class="news-column">
+                    <div class="news-group-title">
+                        <h3>Últimas Noticias</h3>
+                        <a href="#todas-noticias">Ver todas &rarr;</a>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card">
+                            <div class="news-card-img">
+                                <img src="assets/campus.png" alt="Inauguración nuevo pabellón">
+                            </div>
+                            <div class="news-card-content">
+                                <span class="news-date">27 May 2026</span>
+                                <h4 class="news-title">Inaugurado el nuevo Centro de Supercomputación Aplicada "Aurelius Computing"</h4>
+                                <p class="news-desc">Una infraestructura pionera que permitirá procesar modelos complejos de inteligencia artificial y modelado climático global.</p>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-card-img">
+                                <img src="assets/library.png" alt="Estudiante en biblioteca">
+                            </div>
+                            <div class="news-card-content">
+                                <span class="news-date">20 May 2026</span>
+                                <h4 class="news-title">Abierta la convocatoria para las Becas de Excelencia Académica de Posgrado 2026/27</h4>
+                                <p class="news-desc">La dotación total asciende a 1.2 millones de euros destinados a financiar estudios de alumnos sobresalientes sin recursos.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Agenda / Eventos -->
+                <div class="agenda-column">
+                    <div class="news-group-title">
+                        <h3>Próximos Eventos</h3>
+                        <a href="#toda-agenda">Ver agenda &rarr;</a>
+                    </div>
+                    <div class="agenda-list">
+                        <!-- Evento 1 -->
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">04</span>
+                                <span class="agenda-month">Jun</span>
+                            </div>
+                            <div class="agenda-info">
+                                <span class="agenda-time">10:00 - 14:00 | Aula Magna</span>
+                                <h4 class="agenda-title"><a href="#evento-1">Simposio Internacional sobre Sostenibilidad e Innovación Urbana</a></h4>
+                            </div>
+                        </div>
+                        <!-- Evento 2 -->
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">11</span>
+                                <span class="agenda-month">Jun</span>
+                            </div>
+                            <div class="agenda-info">
+                                <span class="agenda-time">18:30 | Paraninfo</span>
+                                <h4 class="agenda-title"><a href="#evento-2">Concierto de Verano de la Orquesta Filarmónica Universitaria</a></h4>
+                            </div>
+                        </div>
+                        <!-- Evento 3 -->
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">18</span>
+                                <span class="agenda-month">Jun</span>
+                            </div>
+                            <div class="agenda-info">
+                                <span class="agenda-time">09:00 | Biblioteca Central</span>
+                                <h4 class="agenda-title"><a href="#evento-3">Seminario Metodológico: Redacción y publicación de artículos en revistas Q1</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 1.5rem; justify-content: flex-start;">
+                    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="fill: var(--secondary);">
+                        <path d="M50 5 L15 25 V60 C15 80 40 92 50 95 C60 92 85 80 85 60 V25 L50 5 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <path d="M50 12 L20 29 V58 C20 75 42 86 50 89 C58 86 80 75 80 58 V29 L50 12 Z" fill="currentColor" opacity="0.15"/>
+                        <path d="M35 52 C40 50 45 52 50 55 C55 52 60 50 65 52 V38 C60 36 55 38 50 41 C45 38 40 36 35 38 V52 Z" fill="currentColor"/>
+                        <line x1="50" y1="41" x2="50" y2="55" stroke="var(--secondary)" stroke-width="2"/>
+                        <polygon points="50,20 52,25 57,25 53,28 55,33 50,30 45,33 47,28 43,25 48,25" fill="var(--secondary)"/>
+                    </svg>
+                    <div class="logo-text">
+                        <span class="logo-title" style="color: var(--text-light)">AURELIUS</span>
+                        <span class="logo-subtitle">UNIVERSIDAD</span>
+                    </div>
+                </a>
+                <p>Fundada en el principio del saber sin fronteras, la Universidad Aurelius combina la excelencia académica de la tradición clásica anglosajona con el dinamismo y los servicios de la enseñanza superior moderna.</p>
+                <div class="footer-socials">
+                    <a href="#twitter" class="social-icon" aria-label="Twitter X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#facebook" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#instagram" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#youtube" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="#universidad">Universidad</a></li>
+                    <li><a href="#estudios">Estudios</a></li>
+                    <li><a href="#investigacion">Investigación</a></li>
+                    <li><a href="#actualidad">Noticias e Hitos</a></li>
+                    <li><a href="intranet.html">Área de Intranet</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul class="footer-links">
+                    <li><a href="#sede">Sede Electrónica</a></li>
+                    <li><a href="#biblioteca">Biblioteca Universitaria</a></li>
+                    <li><a href="#deportes">Actividades Deportivas</a></li>
+                    <li><a href="#empleo">Portal de Prácticas y Empleabilidad</a></li>
+                    <li><a href="#idiomas">Centro de Idiomas Oficial</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto General</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <span>Avenida de la Academia, s/n, 24007 León, España.</span>
+                    </li>
+                    <li>
+                        <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+                        <span>+34 987 29 1000</span>
+                    </li>
+                    <li>
+                        <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <span>informacion@aurelius.edu</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Universidad Aurelius. Todos los derechos reservados.</p>
+            <div class="footer-bottom-links">
+                <a href="#privacidad">Política de Privacidad</a>
+                <a href="#cookies">Configuración de Cookies</a>
+                <a href="#aviso-legal">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
